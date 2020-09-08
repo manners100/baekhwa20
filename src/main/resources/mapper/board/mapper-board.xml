@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baekhwa.mapper.BoardMapper">
+	<select id="findAll" resultType="baekhwa.domain.dto.BoardDto">
+		select * from board 
+		order by no desc
+	</select>
+	
+	<insert id="save">
+		insert into board(subject, count, writer, user_ip, reg_date, content)
+		values(#{subject}, #{count}, #{writer}, #{user_ip}, now(), #{content})
+	</insert>
+	
+	<select id="findById" resultType="baekhwa.domain.dto.BoardDto">
+		select * from board
+		where no=#{no}
+	</select>
+	
+	<update id="edit">
+		update board set subject=#{subject}, content=#{content}
+		where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from board
+		where no=#{no}
+	</delete>
+	
+</mapper>

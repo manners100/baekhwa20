@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="/commons/head::commonHead"></th:block>
+	<script type="text/javascript" src="/js/myscript.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+	<th:block th:insert="/commons/header::header"></th:block>
+	<section id="visual">
+		<h1>visual</h1>
+		<div class="visual-area">
+			
+			<!-- visual 이미지S -->
+			<div id="img-list">
+				<ul>
+					<li>
+						<div class="cover">
+							<div class="visual-title flex-column-center">
+								<p class="tit"><!-- &lt;디온 공성전&gt; --></p>
+								<p><!-- 디온 성의 주인을 가리기 위한 첫 번째 공성전이 시작됩니다. --></p>
+								<p><a href="#">바로가기</a></p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cover">
+							<div class="visual-title flex-column-center">
+								<p class="tit"><!-- 공성전 가이드북 --></p>
+								<p><!-- 다가 올 공성전을 위한 필독서! --></p>
+								<p><a href="#">바로가기</a></p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cover">
+							<div class="visual-title flex-column-center">
+								<p class="tit"><!-- 디온 공성전 이벤트 통합 안내 --></p>
+								<p><!-- 명예로운 왕좌의 첫 번째 주인이 되기 위한 전투가 시작됩니다. --></p>
+								<p><a href="#">바로가기</a></p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cover">
+							<div class="visual-title flex-column-center">
+								<p class="tit"><!-- 디온 훈련소 --></p>
+								<p><!-- 매일 2회! 특별 훈련에 참여하고 전쟁을 준비하라! --></p>
+								<p><a href="#">바로가기</a></p>
+							</div>
+						</div>
+					</li>
+					<!-- 
+					<li>
+						<div class="cover">
+							<div class="visual-title flex-column-center">
+								<p class="tit">회색 기사단의 습격</p>
+								<p>회색 기사단을 물리치고 회색 기사단의 전리품을 획득하세요</p>
+								<p><a href="#">바로가기</a></p>
+							</div>
+						</div>
+					</li>
+					 -->
+				</ul>
+			</div>
+			<!-- visual 썸네일 목록 -->
+			<div id="thumbnail">
+				<div class="ea">
+					<span class="idx">1</span>/<span class="tot-ea">17</span>
+				</div>
+				<div class="thumbnail-area">
+					<ul class="flex" id="th-list">
+						<li class="th-target">
+							<img alt="썸네일이미지1" src="/images/visual/baekhwa_bg1.jpg">
+						</li>
+						<li>
+							<img alt="썸네일이미지2" src="/images/visual/baekhwa_bg2.jpg">
+						</li>
+						<li>
+							<img alt="썸네일이미지3" src="/images/visual/baekhwa_bg3.jpg">
+						</li>
+						<li>
+							<img alt="썸네일이미지4" src="/images/visual/baekhwa_bg4.jpg">
+						</li>
+						<!-- 
+						<li>
+							<img alt="썸네일이미지5" src="/images/visual/bn_sum_pc_05.jpg">
+						</li>
+						 -->
+					</ul>
+				</div>
+				<div class="btn-th flex-column-center">
+					<div class="btn-th-wrap flex-between">
+						<button id="btn-prev"><img alt="" src="/images/ico_prev1_x1.png"></button>
+						<button id="btn-next"><img alt="" src="/images/ico_next1_x1.png"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<main>
+		<h1>메인 콘텐츠</h1>
+		<div>
+			<section id="shortcut-appDown" class="flex-column-center">
+				<h1>shortcut/appDown</h1>
+				<div class="view-width flex-between">
+					<nav id="shortcut" class="flex-column-center">
+						<h1>shortcut</h1>
+						<div>
+							<ul class="flex">
+								<li>
+									<a href="#">
+										<i></i>
+										<span>공지사항</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i></i>
+										<span>이벤트</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i></i>
+										<span>자유게시판</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i></i>
+										<span>혈맹아지트</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<section id="appdown">
+						<h1>appDown</h1>
+						<div>
+							<ul class="flex">
+								<li>
+									<a href="#">
+										<img alt="" src="/images/appdown/btn-google.png">
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img alt="" src="/images/appdown/btn-apple.png">
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img alt="" src="/images/appdown/btn-purple.png">
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img alt="" src="/images/appdown/pwa_m.png">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</section>
+			<section id="event-news">
+				<h1>이벤트/뉴스</h1>
+				<div class="view-width flex-between">
+					<section id="event">
+						<h1>이벤트</h1>
+						<div class="wrap">
+							<div class="tit-wrap flex-between">
+								<p class="tit">이벤트+</p>
+								<div class="flex-column-center"><!-- 세로정렬 -->
+									<div class="flex"><!-- 가로정렬 div ul div-->
+										<div class="e-button e-prev"></div>
+										<ul class="flex">
+											<li th:each="e : ${eventList}">
+												<span class="e-bullet"></span>
+											</li>
+										</ul>
+										<div class="e-button e-next"></div>
+									</div>
+								</div>
+								
+							</div>
+							<div class="img-wrap">
+								<ul class="flex">
+									<li class="flex" th:each="e,status  : ${eventList}" th:value="${status.index}">
+										<div class="left-img" th:style="|background-image:${e.l_url}|">
+											<p>[[${e.l_text}]]</p>
+										</div>
+										<div class="right-img" >
+											<div class="top" th:style="|background-image:${e.t_url}|">
+												<p>[[${e.t_text}]]</p>
+											</div>
+											<div class="bottom" th:style="|background-image:${e.b_url}|">
+												<p>[[${e.b_text}]]</p>
+											</div>
+										</div>
+									</li>
+									<!-- 
+									<li class="flex">
+										bg로 이미지 적용
+										<div class="left-img">
+											<p>&lt;디온 공성전&gt;</p>
+										</div>
+										<div class="right-img">
+											bg로 이미지 적용
+											<div class="top">
+												<p>공성전 가이드북</p>
+											</div>
+											bg로 이미지 적용
+											<div class="bottom">
+												<p>디온 공선전 이벤트 통합 안내</p>
+											</div>
+										</div>
+									</li>
+									
+									<li class="flex">
+										bg로 이미지 적용
+										<div class="left-img">
+											<p>디온 훈련소</p>
+										</div>
+										<div class="right-img">
+											bg로 이미지 적용
+											<div class="top">
+												<p>회색기사단의 습격</p>
+											</div>
+											bg로 이미지 적용
+											<div class="bottom">
+												<p>전쟁의 시작</p>
+											</div>
+										</div>
+									</li>
+									
+									<li class="flex">
+										bg로 이미지 적용
+										<div class="left-img">
+											<p>최초 성의 주인</p>
+										</div>
+										<div class="right-img">
+											bg로 이미지 적용
+											<div class="top">
+												<p>내복단의 이름으로</p>
+											</div>
+											bg로 이미지 적용
+											<div class="bottom">
+												<p>행운의 황금 주사위</p>
+											</div>
+										</div>
+									</li>
+									
+									<li class="flex">
+										bg로 이미지 적용
+										<div class="left-img">
+											<p>리니지2M X KT결제 할인 프로모션</p>
+										</div>
+										<div class="right-img">
+											bg로 이미지 적용
+											<div class="top">
+												<p>WELCOME 풍요의 시대 데일리 혜택</p>
+											</div>
+											bg로 이미지 적용
+											<div class="bottom">
+												<p>빛나는 영웅 전설</p>
+											</div>
+										</div>
+									</li>
+									
+									<li class="flex">
+										bg로 이미지 적용
+										<div class="left-img">
+											<p>영웅으로 가는 길</p>
+										</div>
+										<div class="right-img">
+											bg로 이미지 적용
+											<div class="top">
+												<p>체,체,체,체,체인지</p>
+											</div>
+											bg로 이미지 적용
+											<div class="bottom">
+												<p>기기등록 후 안전하게 플레이하세요!</p>
+											</div>
+										</div>
+									</li>
+									 -->
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section id="news">
+						<h1>소식</h1>
+						<div>
+							<div class="tit-wrap">
+								<p class="tit">소식+</p>
+							</div>
+							<div class="news-list">
+								<ul>
+									<li><a href="#">[노트] 리니지2M 08월 19일 업데이트 노트</a><span>N</span></li>
+									<li><a href="#">[안내] 8월 19일(수) 리니지2M 정기점검 안내</a><span>N</span></li>
+									<li><a href="#">리니지2M X KT 결제 할인 프로모션</a></li>
+									<li><a href="#">[안내] 리니지2M 휴대전화 번호 등록 방법 안내</a><span>N</span></li>
+									<li><a href="#">신규 서버 바이움 오픈 일정 안내</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</div>
+			</section>
+			<section>
+				<h1>추천/마이피드</h1>
+				<div>
+				<script type="text/javascript">
+				
+					$(function(){
+						tab_run();
+						
+						$("#tab-munu>div>ul>li").click(function(){
+							var i=$(this).index();
+							$("#tab-munu>div>ul>li").removeClass("is-active");
+							$("#tab-munu>div>ul>li").eq(i).addClass("is-active");
+							tab_run();
+						});
+					});
+					function tab_run(){
+						var i=$("#tab-munu li.is-active").index();
+						$("#tab-contents>div>ul>li").hide();
+						$("#tab-contents>div>ul>li").eq(i).show();
+					}
+				</script>
+					<section id="tab-munu">
+						<h1>탭-메뉴</h1>
+						<div>
+							<ul class="flex-center">
+								<li class="is-active">추천</li>
+								<li >MY피드</li>
+							</ul>
+						</div>
+					</section>
+					<section id="tab-contents">
+						<h1>탭-컨텐츠</h1>
+						<div>
+							<ul>
+								<li class="tab recomend">
+									<section id="best" class="view-width">
+										<h1>베스트 콘텐츠</h1>
+										<div>
+											<p class="tit">CM픽! 베스트 콘텐츠</p>
+											<div class="best-list flex-center">
+												<div>
+													<div>
+														<img src="/images/best/banner_342x192_1.jpg">
+													</div>
+													<div class="tit">[뉴스] 8월 3주차 업데이트 뉴스</div>
+												</div>
+												<div>
+													<div>
+														<img src="/images/best/banner_342x192_2.jpg">
+													</div>
+													<div class="tit">&lt;퍼플on 멀티플레이 계정 관리&gt; 업데이트 안내</div>
+												</div>
+												<div>
+													<div>
+														<img src="/images/best/banner_342x192_3.jpg">
+													</div>
+													<div class="tit">디온 공성전 이벤트 통합 안내</div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<section id="guide">
+										<h1>리니지2M가이드</h1>
+										<div class="wrap view-width">
+											<p class="tit">리니지2M가이드</p>
+											<ul class="flex">
+												<li>
+													<i class="icon"></i>
+													<p>보스 몬스터</p>
+												</li>
+												<li>
+													<i class="icon"></i>
+													<p>메뉴 및 UI</p>
+												</li>
+												<li>
+													<i class="icon"></i>
+													<p>계정연동</p>
+												</li>
+												<li>
+													<i class="icon"></i>
+													<p>캐릭터 조작 및 이동</p>
+												</li>
+												<li>
+													<i class="icon"></i>
+													<p>전투와 스캐닝</p>
+												</li>
+												<li>
+													<i class="icon"></i>
+													<p>카메라 시점</p>
+												</li>
+											</ul>
+										</div>
+									</section>
+									<section>
+										<h1>질문&amp;노하우+</h1>
+										<div></div>
+									</section>
+								</li>
+								<li class="tab myfeed">
+									<section id="myfeed">
+										<h1>myfeed</h1>
+										<div class="flex-column-center">
+											<div>
+												<p>로그인후 나를 위한 맞춤 콘텐츠를 확인해보세요.</p>
+												<a href="#">로그인</a>
+											</div>
+										</div>
+									</section>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</section>
+			<section id="appdown-bottom">
+				<h1>appDown</h1>
+				<ul class="flex-center">
+					<li>
+						<p class="tit">리니지2M</p>
+						<div>
+							<a href="#">
+								<img alt="" src="/images/appdown/btn-google.png">
+							</a>
+							<a href="#">
+								<img alt="" src="/images/appdown/btn-apple.png">
+							</a>
+						</div>	
+					</li>
+					<li>
+						<p class="tit">PURPLE</p>
+						<div>
+							<a href="#">
+								<img alt="" src="/images/appdown/btn-purple.png">
+							</a>
+						</div>	
+					</li>
+					<li>
+						<p class="tit">리니지2M 공식 커뮤니티</p>
+						<div>
+							<a href="#">
+								<img alt="" src="/images/appdown/pwa_m.png">
+							</a>
+						</div>	
+					</li>
+					
+				</ul>
+			</section>
+			<section th:if="${path != null}">
+				[[${path}]]
+			</section>
+		</div>
+	</main>
+	<th:block th:insert="/commons/footer::footer"></th:block>
+</body>
+</html>
