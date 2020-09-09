@@ -11,4 +11,6 @@ public interface FilesService {
 
 	List<FilesResponseDto> findAll();
 
+	void delete(Long no);
+
 }

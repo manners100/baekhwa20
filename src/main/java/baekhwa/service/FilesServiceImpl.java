@@ -34,10 +34,15 @@ public class FilesServiceImpl implements FilesService{
 		
 		for(Files file : result) {
 			FilesResponseDto dto=
-					//new FilesResponseDto(file.getNo(), file.getFileName(), file.getT_text(), file.getD_text(), file.getUsed() );
+					//new FilesResponseDto(file.getNo(), file.getFileName()
+					//,"url('/upload/"+file.getFileName()+"')" ,file.getT_text(), file.getD_text(), file.getUsed() );
 					FilesResponseDto.builder()
-					.fileName(file.getFileName()).no(file.getNo())
-					.t_text(file.getT_text()).d_text(file.getD_text()).used(file.getUsed())
+					.fileName(file.getFileName())
+					.fileUrl("url('/upload/"+file.getFileName()+"')")
+					.no(file.getNo())
+					.t_text(file.getT_text())
+					.d_text(file.getD_text())
+					.used(file.getUsed())
 					.build();
 			list.add(dto);
 			//FilesResponseDto dto=new FilesResponseDto();
@@ -48,6 +53,11 @@ public class FilesServiceImpl implements FilesService{
 		}
 		
 		return list;
+	}
+
+	@Override
+	public void delete(Long no) {
+		repository.deleteById(no);
 	}
 
 }

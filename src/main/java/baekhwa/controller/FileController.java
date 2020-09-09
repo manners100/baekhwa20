@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +24,15 @@ public class FileController {
 	@Autowired
 	private FilesService service;
 	
+	
+	//삭제
+	@GetMapping("/file/delete/{no}")
+	public String fileDelete(@PathVariable Long no) {
+		service.delete(no);
+		return "redirect:/file/event";
+	}
+	
+	//리스트 불러오기
 	@GetMapping("/file/event")
 	public String fileEvent(Model model) {
 		//DB에서 listdata갖고오기
@@ -32,11 +42,13 @@ public class FileController {
 		return "/files/list";
 	}
 	
+	//등록페이지이동
 	@GetMapping("/file/reg")
 	public String fileReg() {
 		return "/files/reg";
 	}
 	
+	//이미지 등록및 업로드
 	@PostMapping("/file/reg")
 	public String fileReg(FileRequestDto dto, MultipartFile fileInfo) throws IllegalStateException, IOException {
 		String fileName=fileInfo.getOriginalFilename();

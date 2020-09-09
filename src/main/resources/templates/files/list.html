@@ -5,15 +5,19 @@
 	<link rel="stylesheet" type="text/css" href="/css/files/list.css">
 </head>
 <body>
+<!-- 
 	<th:block th:insert="/commons/header::header"></th:block>
+	
 	<section id="title-img">
 		<h1>페이지 타이틀 이미지</h1>
 		<div>
 		</div>
 	</section>
+	 -->
 	<main>
 		<h1>이벤트 목록 페이지</h1>
-		<div class="view-width">
+		<div class="">
+		
 			<section id="page-tit">
 				<h1>페이지제목</h1>
 				<p>이벤트 목록 페이지</p>
@@ -54,7 +58,7 @@
 							<input type="hidden" name="no" th:value="${dto.no}">
 						</li>
 						<li>
-							<span class="con-txt file-img" th:style="|background-image: url('/upload/${dto.fileName}')|"></span>
+							<span class="con-txt file-img" th:style="|background-image: ${dto.fileUrl}|"></span>
 							<input type="file" name="img" >
 						</li>
 						<li>
@@ -66,25 +70,70 @@
 							<input type="text" name="d_text" th:value="${dto.d_text}">
 						</li>
 						
-						<li><a th:href="|/event/used/${dto.no}|">[[${dto.used}]]</a></li>
+						<li><a th:href="|/file/used/${dto.no}|">[[${dto.used}]]</a></li>
 						<li><button type="submit">수정</button></li>
-						<li><a th:href="|/event/delete/${dto.no}|">삭제</a></li>
+						<li><a th:href="|/file/delete/${dto.no}|">삭제</a></li>
 					</ul>
 					</form>
 					
 				</div>
 				
 				<div id="list-view">
-					<ul>
-						<li th:each="dto:${list}" th:style="|background-image: url('/upload/${dto.fileName}')|">
+					<ul class="flex img-wrap" >
+						<li th:each="dto:${list}" th:style="|background-image: ${dto.fileUrl}|">
 							<p></p>
 							<span></span>
 						</li>
 					</ul>
+					<script type="text/javascript">
+						var viewSize;
+						$(function(){
+							viewSize=$("#list-view").width();
+							$("#list-view .img-wrap li").css("width", viewSize);
+							
+							$(window).resize(function(){
+								$("#list-view").css("width", "100%");
+								viewSize=$("#list-view").width();
+								//alert(viewSize);
+								$("#list-view .img-wrap li").css("width", viewSize);
+							});
+							
+							$("#list-view .btn .prev").click(filePrev);
+							$("#list-view .btn .next").click(fileNext);
+							
+						});
+						
+						function filePrev(){
+							var viewSize=$("#list-view").width();
+							var first=$("#list-view .img-wrap li:first-child");
+							var last=$("#list-view .img-wrap li:last-child");
+							first.before(last);
+							$("#list-view .img-wrap").css("left", -viewSize);
+							
+							$("#list-view .img-wrap").animate({left: 0}, 1000);
+						}
+						
+						function fileNext(){
+							var viewSize=$("#list-view").width();
+							//alert(viewSize);
+							$("#list-view .img-wrap").animate({left: -viewSize}, 1000, function(){
+								var first=$("#list-view .img-wrap li:first-child");
+								var last=$("#list-view .img-wrap li:last-child");
+								last.after(first);//첫번에 li태그를 제일 뒤로 배치
+								$("#list-view .img-wrap").css("left", 0);
+							});
+						}
+					</script>
+					<div class="btn   flex-between">
+						<img class="prev" alt="prev" src="/images/ico_prev1_x1.png">
+						<img class="next" alt="next" src="/images/ico_next1_x1.png">
+					</div>
 				</div>
 			</section>
 		</div>
 	</main>
+	<!-- 
 	<th:block th:insert="/commons/footer::footer"></th:block>
+	 -->
 </body>
 </html>
