@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import baekhwa.domain.dto.JpaBoardRequestDto;
 import baekhwa.domain.dto.JpaBoardRequestUpdateDto;
 import baekhwa.domain.dto.JpaBoardResponseDto;
+import baekhwa.domain.dto.MyPageDto;
 import baekhwa.domain.dto.PageDto;
 import baekhwa.domain.entity.JpaBoard;
 import baekhwa.domain.entity.JpaBoardRepository;
@@ -45,8 +46,9 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 		
 		Pageable pageable=PageRequest.of(page-1, size, sort);
 		Page<JpaBoard> resultPage=repository.findAll(pageable);
-		PageDto<JpaBoard> pageDto=new PageDto<>(resultPage);
 		
+		//PageDto<JpaBoard> pageDto=new PageDto<>(resultPage);
+		MyPageDto pageDto=new MyPageDto(page, resultPage.getTotalPages());
 		//log.debug("size :"+resultPage.getSize());
 		log.debug("page-tot :"+resultPage.getTotalPages());
 		//log.debug("getNumber :"+resultPage.getNumber());

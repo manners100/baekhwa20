@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import baekhwa.domain.dto.BoardDto;
 import baekhwa.service.BoardService;
@@ -56,20 +57,17 @@ public class BoardController {
 		return "/board/write";
 	}
 	
-	@GetMapping("/board/list")
-	public String board(Model model) {
+	@GetMapping("/board/list/{page}")
+	public ModelAndView board(@PathVariable int page ) {
 		//DB에서 데이터 갖고오기 (select ~~~~ 실행후 결과리턴)
-		List<BoardDto> list=service.findAll();
+		ModelAndView mv=service.findAll(page);
+		mv.setViewName("/board/list");	
 		
-		//ModelAndView mv=new ModelAndView("/board/list");
-		//mv.addObject("boardList", list);
-		//list.html페이지에서 데이터를 읽을수있는 (이름,value)
-		model.addAttribute("boardList", list);
 		//날짜 오늘인지 체크
-		model.addAttribute("today", LocalDate.now());
+		mv.addObject("today", LocalDate.now());
 		
 		//페이지 이동
-		return "/board/list";
+		return mv;
 	}
 
 }

@@ -2,11 +2,13 @@ package baekhwa.service;
 
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import baekhwa.domain.dto.BoardDto;
 
 public interface BoardService {
 
-	List<BoardDto> findAll();
+	ModelAndView findAll(int page);
 
 	void save(BoardDto dto);
 

@@ -3,6 +3,7 @@ package baekhwa.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import baekhwa.domain.dto.BoardDto;
 
@@ -18,5 +19,9 @@ public interface BoardMapper {
 	void edit(BoardDto dto);
 
 	void delete(int no);
+
+	List<BoardDto> findAllDesc(RowBounds rowbounds);
+
+	int getCountOfRows();
 
 }

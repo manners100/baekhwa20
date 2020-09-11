@@ -45,6 +45,21 @@
 							</th:block>
 						</li>
 					</ul>
+					<div class="flex-center pagging">
+						<th:block th:if="${pageInfo.from > 1}">
+							<a href="/board/list/1" >&lt;&lt;</a>
+							<a th:href="|/board/list/${pageInfo.from - 1}|" >&lt;</a>
+						</th:block>
+						
+						<th:block th:each="page :${#numbers.sequence( pageInfo.from , pageInfo.to )}">
+							<a th:href="|/board/list/${page}|" >[[${page}]]</a>
+						</th:block>
+						
+						<th:block th:if="${pageInfo.total != pageInfo.to}">
+							<a th:href="|/board/list/${pageInfo.to + 1}|" >&gt;</a>
+							<a th:href="|/board/list/${pageInfo.total}|" >&gt;&gt;</a>
+						</th:block>
+					</div>
 				</div>
 			</section>
 		</div>
