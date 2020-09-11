@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import baekhwa.domain.dto.JpaBoardRequestDto;
 import baekhwa.domain.dto.JpaBoardRequestUpdateDto;
@@ -61,14 +62,16 @@ public class JpaController {
 		return "redirect:/jpa/list";
 	}
 	
-	@GetMapping("/jpa/list")
-	public String list(Model model) {
+	//게시판이동 & DB에서 데이터 갖고오는작업
+	@GetMapping("/jpa/list/{page}")
+	public ModelAndView list(@PathVariable int page) {
 		//페이지에 갖고갈 데이터 갖고작업을
 		//누구한테 시킬까요?
-		List<JpaBoardResponseDto> list=service.findAll();
-		model.addAttribute("jpaList", list);
+		ModelAndView mv=service.findAll(page);
+		//model.addAttribute("jpaList", list);
+		mv.setViewName("/jpa/list");//이동할 페이지 정보
 		
-		return "/jpa/list";//페이지 이동
+		return mv;
 	}
 	
 	@GetMapping("/jpa/write")

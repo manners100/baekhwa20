@@ -49,7 +49,6 @@ public class JpaBoard {
 	private int count;
 	
 	@CreatedDate //데이터가 처음 만들어질때 자동생성
-	@Column(nullable = false)
 	private LocalDateTime reg_date;
 	
 	@Builder

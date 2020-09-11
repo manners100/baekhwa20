@@ -6,14 +6,24 @@ import java.util.Vector;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import baekhwa.domain.dto.JpaBoardRequestDto;
 import baekhwa.domain.dto.JpaBoardRequestUpdateDto;
 import baekhwa.domain.dto.JpaBoardResponseDto;
+import baekhwa.domain.dto.PageDto;
 import baekhwa.domain.entity.JpaBoard;
 import baekhwa.domain.entity.JpaBoardRepository;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Service
 public class JpaBoardServiceImpl implements JpaBoardService{
 	
@@ -28,10 +38,27 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 	}
 
 	@Override
-	public List<JpaBoardResponseDto> findAll() {
+	public ModelAndView findAll(int page) {
+		//int page=0;//첫페이지
+		int size=10;//페이지에 게시될 게시글수
+		Sort sort=Sort.by(Direction.DESC, "no");//정렬방법,정렬요소
 		
-		List<JpaBoard> result=repository.findAll();
+		Pageable pageable=PageRequest.of(page-1, size, sort);
+		Page<JpaBoard> resultPage=repository.findAll(pageable);
+		PageDto<JpaBoard> pageDto=new PageDto<>(resultPage);
 		
+		//log.debug("size :"+resultPage.getSize());
+		log.debug("page-tot :"+resultPage.getTotalPages());
+		//log.debug("getNumber :"+resultPage.getNumber());
+		//log.debug("getNumberOfElements :"+resultPage.getNumberOfElements());
+		//log.debug(resultPage.isFirst());
+		//log.debug(resultPage.isLast());
+		//log.debug(resultPage.hasNext());
+		//log.debug(resultPage.hasPrevious());
+		
+		
+		//page에서 List<JpaBoard> 얻어오기
+		List<JpaBoard> result=resultPage.getContent();
 		//create collection<JpaBoardResponseDto>
 		List<JpaBoardResponseDto> list=new Vector<>();
 		for(JpaBoard entity : result) {
@@ -40,8 +67,11 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 			//List<JpaBoardResponseDto> 에 저장
 			list.add(dto);
 		}
+		ModelAndView mv =new ModelAndView();
+		mv.addObject("jpaList", list);
+		mv.addObject("pageInfo", pageDto);
 		
-		return list;
+		return mv;
 	}
 
 	@Override

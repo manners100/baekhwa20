@@ -38,7 +38,26 @@
 						<li>[[${dto.writer}]]</li>
 						<li>[[${dto.reg_date}]]</li>
 					</ul>
+					
+					<div class="flex-center pagging">
+						<th:block th:if="${pageInfo.from > 1}">
+							<a href="/jpa/list/1" >&lt;&lt;</a>
+							<a th:href="|/jpa/list/${pageInfo.from - 1}|" >&lt;</a>
+						</th:block>
+						
+						<th:block th:each="page :${#numbers.sequence( pageInfo.from , pageInfo.to )}">
+							<a th:href="|/jpa/list/${page}|" >[[${page}]]</a>
+						</th:block>
+						
+						<th:block th:if="${pageInfo.total != pageInfo.to}">
+							<a th:href="|/jpa/list/${pageInfo.to + 1}|" >&gt;</a>
+							<a th:href="|/jpa/list/${pageInfo.total}|" >&gt;&gt;</a>
+						</th:block>
+					</div>
+					
+					
 				</div>
+				
 			</section>
 		</div>
 	</main>
