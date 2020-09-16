@@ -24,6 +24,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public ModelAndView findAll(int page) {
+		long start=System.nanoTime();
 		//return mapper.findAll();
 		int limit =5;
 		int offset=(page-1)*limit;
@@ -42,7 +43,8 @@ public class BoardServiceImpl implements BoardService{
 		ModelAndView mv =new ModelAndView();
 		mv.addObject("pageInfo", myPageDto);
 		mv.addObject("boardList", list);
-		
+		long end=System.nanoTime();
+		System.out.println(end-start+" nano초");
 		return mv;
 	}
 

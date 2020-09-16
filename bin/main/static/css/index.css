@@ -43,7 +43,7 @@
 	background-image:url("/images/visual/baekhwa_bg4.jpg");
 }
 #img-list ul li:nth-child(5){
-	background-image:url("/images/visual/bn_top_pc_5.jpg");
+	background-image:url("/images/visual/baekhwa_bg5.jpg");
 }
 #img-list ul li .visual-title{
 	width:100%;
@@ -75,7 +75,7 @@
 	position: absolute;
 }
 #thumbnail>.thumbnail-area{
-	width: 440px;
+	width: 550px;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -103,7 +103,7 @@
 	height: 76px;
 }
 #thumbnail>.btn-th .btn-th-wrap{
-	width: 550px;
+	width: 660px;
 	margin: 0 auto;
 }
 

@@ -40,6 +40,7 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 
 	@Override
 	public ModelAndView findAll(int page) {
+		long start=System.nanoTime();
 		//int page=0;//첫페이지
 		int size=10;//페이지에 게시될 게시글수
 		Sort sort=Sort.by(Direction.DESC, "no");//정렬방법,정렬요소
@@ -72,7 +73,8 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 		ModelAndView mv =new ModelAndView();
 		mv.addObject("jpaList", list);
 		mv.addObject("pageInfo", pageDto);
-		
+		long end=System.nanoTime();
+		System.out.println(end-start+ "namo초");
 		return mv;
 	}
 

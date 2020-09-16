@@ -33,21 +33,28 @@
 					</ul>
 					<ul class="contents flex" th:each="dto:${jpaList}" >
 						<li th:text="${dto.no}"></li>
-						<li><a th:href="|/jpa/${dto.no}|">[[${dto.subject}]]</a></li>
+						<!-- @{/jpa/1001(page=1)} :: /jpa/1001?page=1 -->
+						<li><a th:href="@{|/jpa/${dto.no}|(page=${page})}" >[[${dto.subject}]]</a></li>
 						<li>[[${dto.count}]]</li>
 						<li>[[${dto.writer}]]</li>
 						<li>[[${dto.reg_date}]]</li>
 					</ul>
-					
-					<div class="flex-center pagging">
+					<script th:inline="javascript">
+						$(function(){
+							//var tag="#pagging>span:nth-child("+[[${page}]]+")>a";
+							var tag="#pagging>span:nth-child([(${page})])>a";
+							$(tag).addClass("select");
+						});
+					</script>
+					<div id="pagging" class="flex-center pagging">
 						<th:block th:if="${pageInfo.from > 1}">
 							<a href="/jpa/list/1" >&lt;&lt;</a>
 							<a th:href="|/jpa/list/${pageInfo.from - 1}|" >&lt;</a>
 						</th:block>
 						
-						<th:block th:each="page :${#numbers.sequence( pageInfo.from , pageInfo.to )}">
+						<span th:each="page :${#numbers.sequence( pageInfo.from , pageInfo.to )}">
 							<a th:href="|/jpa/list/${page}|" >[[${page}]]</a>
-						</th:block>
+						</span>
 						
 						<th:block th:if="${pageInfo.total != pageInfo.to}">
 							<a th:href="|/jpa/list/${pageInfo.to + 1}|" >&gt;</a>

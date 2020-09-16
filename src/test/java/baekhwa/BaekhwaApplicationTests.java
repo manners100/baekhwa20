@@ -28,7 +28,7 @@ class BaekhwaApplicationTests {
 	
 	//@Test
 	public void mysqlData() {
-		for(int i=1 ; i<=100 ; i++) {
+		for(int i=10101 ; i<=100000 ; i++) {
 			BoardDto dto=new BoardDto("제목"+i, "test", "127.0.0.1", "내용"+i);
 			boardMapper.save(dto);
 		}

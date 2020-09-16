@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ public class JpaController {
 	public String edit(JpaBoardRequestUpdateDto update) {
 		log.debug(update);
 		service.update(update);
-		return "redirect:/jpa/list";
+		return "redirect:/jpa/list/1";
 	}
 	
 	@GetMapping("/jpa/delete/{no}")
@@ -39,15 +40,17 @@ public class JpaController {
 		
 		service.delete(no);
 		
-		return "redirect:/jpa/list";
+		return "redirect:/jpa/list/1";
 	}
 	
 	@GetMapping("/jpa/{no}")
-	public String detail(@PathVariable Long no, Model model) {
-		//DB no의 게시글 정보를 갖고옵시다.
+	public String detail(@PathVariable Long no, Model model, @Param("page") int page) {
+		//DB no의 게시글 정보를 갖고옵시다.                         //쿼리스트링의 파라미터변수page
 		JpaBoardResponseDto dto=service.findById(no);
 		//MVC 
 		model.addAttribute("dto", dto);
+		model.addAttribute("page", page);
+		
 		
 		return "/jpa/detail";//페이지이동
 	}
@@ -59,7 +62,7 @@ public class JpaController {
 		
 		service.save(dto);
 		
-		return "redirect:/jpa/list";
+		return "redirect:/jpa/list/1";
 	}
 	
 	//게시판이동 & DB에서 데이터 갖고오는작업

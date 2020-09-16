@@ -27,7 +27,7 @@
 		delete from board
 		where no=#{no}
 	</delete>
-	<select id="findAllDesc" resultType="baekhwa.domain.dto.BoardDto">
+	<select id="findAllDesc" resultType="baekhwa.domain.dto.BoardDto" resultSetType="SCROLL_SENSITIVE" >
 		select * from board 
 		order by no desc
 		<!-- limit 10 offset 0 -->

@@ -32,7 +32,7 @@
 						<li class="content">[[${dto.content}]]</li>
 					</ul>
 					<div class="flex-between">
-						<a href="/jpa/list"><button type="button" class="btn-style">글목록</button></a>
+						<a th:href="|/jpa/list/${page}|"><button type="button" class="btn-style">글목록</button></a>
 						<div>
 							<button id="btn-edit" type="button" class="btn-style">수정</button>
 							<script type="text/javascript">
