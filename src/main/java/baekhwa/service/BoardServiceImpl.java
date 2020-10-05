@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService{
 		mv.addObject("pageInfo", myPageDto);
 		mv.addObject("boardList", list);
 		long end=System.nanoTime();
-		System.out.println(end-start+" nano초");
+		System.out.println((end-start)/1000000000.0+ "nano초");
 		return mv;
 	}
 

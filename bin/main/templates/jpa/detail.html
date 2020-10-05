@@ -58,7 +58,7 @@
 				</script>
 				<!-- 수정 페이지 정보 -->
 				<form class="wrap" id="edit" action="/jpa/edit" method="post">
-					<input type="hidden" name="no" th:value="${dto.no}">
+					<input type="hidden" name="no" th:value="${dto.no}" id="b_no">
 					<ul class="board-detail">
 						<li class="subject">
 							<input type="text" name="subject" th:value="${dto.subject}">
@@ -79,6 +79,66 @@
 						</div>
 					</div>
 				</form>
+			</section>
+			<script type="text/javascript">
+				$(function(){
+					getReplyList();
+					
+					//$("#btn-reply").click(replyReg);//클릭 이벤트등록
+					
+				});//Jquery ready END
+				
+				
+				
+				//댓글 갖고오는 함수
+				function getReplyList(){
+					var b_no=$("#b_no").val();
+					$.ajax({
+						url:"/reply/list", 
+						type:"post",
+						data:{"bno": b_no },
+						success: function(result){
+				      		$("#reply .view").html(result);
+				    	 }
+					});
+				}
+				
+				//댓글 등록처리 함수
+				function replyReg(){
+					var user=$("#user").val();
+					var r_content=$("#r_content").val();//get
+					var b_no=$("#b_no").val();
+					
+					$.ajax({
+						url:"/reply/reg", 
+						type:"post",
+						data:{"writer": user, "content": r_content, "bno": b_no },
+						success: function(result){
+									getReplyList();
+									$("#r_content").val("");//""로 세팅
+						}
+						
+					});
+				}
+				
+				//엔터키를 눌렀을때 댓글등록 처리
+				//key이벤트함수 : 엔터키 체크
+				function keyCheck(event){
+					var x = event.charCode || event.keyCode;
+					if(x==13){//엔터키가 눌러지면
+						replyReg();//댓글등록
+					}
+				}
+			</script>
+			
+			<section id="reply">
+				<div class="write">
+					<input type="hidden" id="user" value="loginUser">
+					<textarea rows="1" cols="100" id="r_content" placeholder="댓글을 입력하세요" onkeydown="keyCheck(event)"></textarea>
+					<!-- <button type="button" class="btn-style" id="btn-reply">댓글</button> -->
+				</div>
+				<div class="view">
+				</div>
 			</section>
 		</div>
 	</main>

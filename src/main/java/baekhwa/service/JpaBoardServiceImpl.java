@@ -67,6 +67,8 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 		for(JpaBoard entity : result) {
 			//result에저장된 entity정보를 JpaBoardResponseDto 변경후
 			JpaBoardResponseDto dto=new JpaBoardResponseDto(entity);
+		
+			
 			//List<JpaBoardResponseDto> 에 저장
 			list.add(dto);
 		}
@@ -74,7 +76,7 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 		mv.addObject("jpaList", list);
 		mv.addObject("pageInfo", pageDto);
 		long end=System.nanoTime();
-		System.out.println(end-start+ "namo초");
+		System.out.println((end-start)/1000000000.0+ "nano초");
 		return mv;
 	}
 

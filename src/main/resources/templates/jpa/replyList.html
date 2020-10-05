@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<script type="text/javascript">
+		$(function(){
+			
+			$(".re-content").dblclick(changeEditState);
+			$(".re-content").blur(function(){
+				$(this).addClass("reset-textarea");
+				$(this).attr("readonly","true");
+				//$(this).attr("readonly","readonly");
+			});
+			
+			
+			
+			$(".re-delete").click(deleteReply);
+		});
+		//수정할수있도록 변환
+		function changeEditState(){
+			$(this).removeAttr("readonly").removeClass("reset-textarea");
+			
+			//수정처리
+			$(".re-content").keydown(function(event){
+				var key = event.charCode || event.keyCode;
+				if(key==13){//엔터입력
+					var rno=$(this).siblings(".rno").val();
+					var content=$(this).val();
+					$.ajax({
+						url:"/reply/update",
+						type:"post",
+						data:{
+							"rno": rno,
+							"content": content
+						},
+						success:function(result){
+							getReplyList();
+						}
+					});
+				}
+			})
+			
+		}
+		//댓글 삭제함수
+		function deleteReply(){
+			//삭제할 댓글번호
+			var rno=$(this).siblings(".rno").val();
+			
+			$.ajax({
+				url:"/reply/delete/"+rno,
+				success:function(result){
+					getReplyList();
+				}
+			});
+		}
+	</script>
+	<ul th:each="list:${replylist}">
+		<li class="list-item1">[[${list.writer}]]<li>
+		<li class="list-item2">[[${list.regDate}]]<li>
+		<li class="list-item3">
+			<textarea class="re-content reset-textarea" rows="1" cols="100" readonly="readonly" >[[${list.content}]]</textarea>
+			<button  class="re-delete">X</button>
+			<input type="hidden" th:value="${list.rno}" class="rno">
+		<li>
+	</ul>
+
+</html>

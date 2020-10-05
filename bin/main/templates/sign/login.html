@@ -34,14 +34,15 @@
 				<ul class="flex-center">
 					<li class="pipe"><a href="#">계정찾기</a></li>
 					<li class="pipe"><a href="#">비밀번호 찾기</a></li>
-					<li><a href="/sign/join">회원가입</a></li>
+					<li><a href="/user/signup">회원가입</a></li>
 				</ul>
 			</nav>
 			<section id="f-g-n">
 				<h1>구글/네이버로그인</h1>
 				<ul>
-					<li><a href="#"><img src="/images/icon-bi-google.svg">Google로 로그인</a></li>
-					<li><a href="#"><img src="https://ssl.pstatic.net/sstatic/search/favicon/favicon_191118_pc.ico">NAVER로 로그인</a></li>
+					<!-- 스프링 시큐리티에서 기본적으로 제공하는 로그인 url "/oauth2/authorization/google" -->
+					<li><a href="/oauth2/authorization/google"><img src="/images/icon-bi-google.svg">Google로 로그인</a></li>
+					<li><a href="/oauth2/authorization/naver"><img src="https://ssl.pstatic.net/sstatic/search/favicon/favicon_191118_pc.ico">NAVER로 로그인</a></li>
 				</ul>
 			</section>
 		</div>

@@ -6,7 +6,7 @@ import baekhwa.domain.entity.JpaBoard;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+
 @Data
 public class JpaBoardResponseDto {
 	
@@ -18,7 +18,10 @@ public class JpaBoardResponseDto {
 	private int count;
 	private LocalDateTime reg_date;
 	
-	
+	public JpaBoardResponseDto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public JpaBoardResponseDto(JpaBoard entity) {
 		this.no = entity.getNo();
 		this.subject = entity.getSubject();
@@ -28,8 +31,7 @@ public class JpaBoardResponseDto {
 		this.count = entity.getCount();
 		this.reg_date = entity.getReg_date();
 	}
-	
-	
+	 
 	
 	
 }

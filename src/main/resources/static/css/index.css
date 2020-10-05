@@ -213,57 +213,57 @@
 	color: #fff;
 	text-align: center;
 }
-/* 
-#event .img-wrap li:nth-child(1) .left-img{
+
+#event .img-wrap li.event-img1 .left-img{
 	background-image: url("/images/event/l1.jpg");
 } 
-#event .img-wrap li:nth-child(1) .right-img .top{
+#event .img-wrap li.event-img1 .right-img .top{
 	background-image: url("/images/event/t1.jpg");
 } 
-#event .img-wrap li:nth-child(1) .right-img .bottom{
+#event .img-wrap li.event-img1 .right-img .bottom{
 	background-image: url("/images/event/b1.jpg");
 } 
 
-#event .img-wrap li:nth-child(2) .left-img{
+#event .img-wrap li.event-img2 .left-img{
 	background-image: url("/images/event/l2.jpg");
 } 
-#event .img-wrap li:nth-child(2) .right-img .top{
+#event .img-wrap li.event-img2 .right-img .top{
 	background-image: url("/images/event/t2.jpg");
 } 
-#event .img-wrap li:nth-child(2) .right-img .bottom{
+#event .img-wrap li.event-img2 .right-img .bottom{
 	background-image: url("/images/event/b2.jpg");
 } 
 
-#event .img-wrap li:nth-child(3) .left-img{
+#event .img-wrap li.event-img3 .left-img{
 	background-image: url("/images/event/l3.jpg");
 } 
-#event .img-wrap li:nth-child(3) .right-img .top{
+#event .img-wrap li.event-img3 .right-img .top{
 	background-image: url("/images/event/t3.jpg");
 } 
-#event .img-wrap li:nth-child(3) .right-img .bottom{
+#event .img-wrap li.event-img3 .right-img .bottom{
 	background-image: url("/images/event/b3.jpg");
 } 
 
-#event .img-wrap li:nth-child(4) .left-img{
+#event .img-wrap li.event-img4 .left-img{
 	background-image: url("/images/event/l4.jpg");
 } 
-#event .img-wrap li:nth-child(4) .right-img .top{
+#event .img-wrap li.event-img4 .right-img .top{
 	background-image: url("/images/event/t4.jpg");
 } 
-#event .img-wrap li:nth-child(4) .right-img .bottom{
+#event .img-wrap li.event-img4 .right-img .bottom{
 	background-image: url("/images/event/b4.jpg");
 } 
 
-#event .img-wrap li:nth-child(5) .left-img{
+#event .img-wrap li.event-img5 .left-img{
 	background-image: url("/images/event/l5.jpg");
 } 
-#event .img-wrap li:nth-child(5) .right-img .top{
+#event .img-wrap li.event-img5 .right-img .top{
 	background-image: url("/images/event/t5.jpg");
 } 
-#event .img-wrap li:nth-child(5) .right-img .bottom{
+#event .img-wrap li.event-img5 .right-img .bottom{
 	background-image: url("/images/event/b5.jpg");
 } 
- */
+
  /* ////////////////////// */
  .e-bullet{
  	width: 6px;
